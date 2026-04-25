@@ -1,0 +1,95 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher.css' %}">
+{% endblock %}
+{% block content %}
+<div class="form-container">
+
+    <h1>Become a Trainer</h1>
+    <p class="subtitle">Share your knowledge and start teaching today</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        
+        <!-- Personal Info -->
+        <div class="section-title">Personal Information</div>
+
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+
+        <div class="row">
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+            <div>
+                <label>Phone</label>
+                <input type="text" name="phone" required>
+            </div>
+        </div>
+
+        <label>Profile Photo</label>
+        <input type="file" name="photo">
+
+        <!-- Professional Info -->
+        <div class="section-title">Professional Details</div>
+
+        <label>Area of Expertise</label>
+        <input type="text" name="expertise">
+
+        <div class="row">
+            <div>
+                <label>Experience (Years)</label>
+                <input type="number" name="experience">
+            </div>
+            <div>
+                <label>Job Title</label>
+                <input type="text" name="job_title">
+            </div>
+        </div>
+
+        <label>Organization (Optional)</label>
+        <input type="text" name="company">
+
+        <!-- Teaching Info -->
+        <div class="section-title">Teaching Information</div>
+
+        <label>Skills You Teach</label>
+        <input type="text" name="skills">
+
+        <label>Teaching Mode</label>
+        <select name="mode">
+            <option>Online</option>
+            <option>Offline</option>
+            <option>Both</option>
+        </select>
+
+        <label>Languages</label>
+        <input type="text" name="languages">
+
+        <!-- Additional -->
+        <div class="section-title">Additional Information</div>
+
+        <label>Short Bio</label>
+        <textarea rows="4" name="bio"></textarea>
+
+        <label>Portfolio / LinkedIn</label>
+        <input type="url" name="portfolio">
+
+        <!-- Agreement -->
+        <div class="checkbox">
+            <input type="checkbox" required>
+            <label>I agree to the terms and conditions</label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit">Register as Trainer</button>
+
+    </form>
+
+    <div class="footer">
+        Already have an account? <a href="#">Login</a>
+    </div>
+
+</div>
+
+{% endblock %}

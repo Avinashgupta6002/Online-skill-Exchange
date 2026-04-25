@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-black text-white overflow-hidden">
+
+    <!-- Animated glow -->
+    <div class="absolute w-[500px] h-[500px] bg-cyan-400 opacity-20 blur-3xl animate-pulse top-[-100px] left-[-100px]"></div>
+    <div class="absolute w-[400px] h-[400px] bg-purple-500 opacity-20 blur-3xl animate-pulse bottom-[-100px] right-[-100px]"></div>
+
+    <div class="text-center z-10 px-6" data-aos="fade-up">
+        <h1 class="text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+            Exchange Skills, Grow Together 🚀
+        </h1>
+
+        <p class="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
+            Learn anything. Teach everything. Build your future with a global community.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="flex justify-center mb-6">
+            <input type="text" placeholder="Search skills..." class="px-5 py-3 w-72 rounded-l-full text-black focus:outline-none">
+            <button class="bg-cyan-400 px-6 rounded-r-full text-black font-semibold hover:scale-105 transition">
+                Search
+            </button>
+        </div>
+
+        <div class="space-x-4">
+            <a href="#" class="btn-primary">Start Learning</a>
+            <a href="#" class="btn-outline">Explore Skills</a>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="py-16 bg-white text-center">
+    <h2 class="text-3xl font-bold mb-10" data-aos="fade-up">Popular Categories</h2>
+
+    <div class="flex flex-wrap justify-center gap-4 px-6">
+        <span class="category">💻 Coding</span>
+        <span class="category">🎨 Design</span>
+        <span class="category">📈 Marketing</span>
+        <span class="category">📷 Photography</span>
+        <span class="category">🎵 Music</span>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-20 bg-gray-100 text-center">
+    <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Why Choose Us?</h2>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 px-6">
+
+        <div class="glass-card" data-aos="zoom-in">
+            <h3>💡 Learn Anything</h3>
+            <p>From beginners to experts.</p>
+        </div>
+
+        <div class="glass-card" data-aos="zoom-in" data-aos-delay="200">
+            <h3>🤝 Skill Exchange</h3>
+            <p>Learn without paying money.</p>
+        </div>
+
+        <div class="glass-card" data-aos="zoom-in" data-aos-delay="400">
+            <h3>🌍 Global Network</h3>
+            <p>Connect worldwide.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- TOP MENTORS -->
+<section class="py-20 bg-white text-center">
+    <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Top Mentors</h2>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+
+        <div class="mentor-card" data-aos="fade-up">
+            <img src="#" class="rounded-full mx-auto mb-4">
+            <h3>Rahul</h3>
+            <p>Web Developer</p>
+        </div>
+
+        <div class="mentor-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="#"  class="rounded-full mx-auto mb-4">
+            <h3>Priya</h3>
+            <p>Designer</p>
+        </div>
+
+        <div class="mentor-card" data-aos="fade-up" data-aos-delay="400">
+            <img src="#" class="rounded-full mx-auto mb-4">
+            <h3>Aman</h3>
+            <p>Marketing Expert</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="py-20 bg-gray-100 text-center">
+    <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+
+        <div data-aos="zoom-in">
+            <h2 class="text-5xl font-bold text-indigo-600">10K+</h2>
+            <p>Users</p>
+        </div>
+
+        <div data-aos="zoom-in" data-aos-delay="200">
+            <h2 class="text-5xl font-bold text-indigo-600">500+</h2>
+            <p>Skills</p>
+        </div>
+
+        <div data-aos="zoom-in" data-aos-delay="400">
+            <h2 class="text-5xl font-bold text-indigo-600">120+</h2>
+            <p>Countries</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 bg-gradient-to-r from-indigo-900 to-purple-900 text-white text-center">
+    <div data-aos="zoom-in">
+        <h2 class="text-4xl font-bold mb-4">Start Your Journey 🚀</h2>
+        <p class="mb-6 text-gray-300">Join the community now</p>
+        <a href="#" class="btn-primary">Join Now</a>
+    </div>
+</section>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 1000,
+  once: true
+});
+</script>
+
+{% endblock %}

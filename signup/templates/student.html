@@ -1,0 +1,75 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student.css' %}">
+{% endblock %}
+{% block content %}
+<div class="form-container">
+
+    <h1>Join as a Learner</h1>
+    <p class="subtitle">Start learning new skills and grow your knowledge</p>
+
+    <form method="POST">
+        
+        <!-- Personal Info -->
+        <div class="section-title">Personal Information</div>
+
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+
+        <div class="row">
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+            <div>
+                <label>Phone</label>
+                <input type="text" name="phone" required>
+            </div>
+        </div>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <!-- Learning Info -->
+        <div class="section-title">Learning Preferences</div>
+
+        <label>Interested Skills</label>
+        <input type="text" name="skills" placeholder="e.g. Python, AI, Web Development">
+
+        <label>Preferred Learning Mode</label>
+        <select name="mode">
+            <option>Online</option>
+            <option>Offline</option>
+            <option>Both</option>
+        </select>
+
+        <label>Preferred Language</label>
+        <input type="text" name="language">
+
+        <!-- Additional -->
+        <div class="section-title">Additional Information</div>
+
+        <label>Education</label>
+        <input type="text" name="education">
+
+        <label>Goals</label>
+        <textarea rows="4" name="goals" placeholder="What do you want to achieve?"></textarea>
+
+        <!-- Agreement -->
+        <div class="checkbox">
+            <input type="checkbox" required>
+            <label>I agree to the terms and conditions</label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit">Register as Learner</button>
+
+    </form>
+
+    <div class="footer">
+        Already have an account? <a href="#">Login</a>
+    </div>
+
+</div>
+
+{% endblock %}

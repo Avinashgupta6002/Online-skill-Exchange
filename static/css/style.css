@@ -1,0 +1,61 @@
+/* Nav links */
+.nav-link {
+    color: white;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #22d3ee;
+    bottom: -4px;
+    left: 0;
+    transition: 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(to right, #22d3ee, #6366f1);
+    padding: 10px 24px;
+    border-radius: 999px;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1);
+}
+
+/* Login button */
+.btn-outline {
+    border: 2px solid #22d3ee;
+    padding: 10px 24px;
+    border-radius: 999px;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #22d3ee;
+    color: black;
+}
+
+
+/* header css */
+
+/* Smooth input */
+input {
+    outline: none;
+}
+
+/* Optional: better placeholder */
+input::placeholder {
+    color: #9ca3af;
+}

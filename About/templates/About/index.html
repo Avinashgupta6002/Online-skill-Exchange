@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- 🌟 HERO SECTION -->
+<section class="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-800 text-white py-24 text-center">
+    <div class="max-w-5xl mx-auto px-6" data-aos="fade-up">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+            About SkillXchange 🚀
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 mb-8">
+            A global community where learners and mentors exchange skills, grow together, and create opportunities.
+        </p>
+        <div class="space-x-4">
+            <a href="#" class="bg-cyan-400 text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-105 hover:bg-cyan-300 transition duration-300">Get Started</a>
+            <a href="#" class="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition duration-300">Explore Skills</a>
+        </div>
+    </div>
+</section>
+
+<!-- 💡 OUR MISSION -->
+<section class="py-20 bg-gray-50 text-center">
+    <div class="max-w-4xl mx-auto px-6" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-6">Our Mission</h2>
+        <p class="text-gray-600 text-lg mb-4">
+            SkillXchange aims to make learning accessible for everyone. Connect, teach, and learn.
+        </p>
+        <p class="text-gray-600 text-lg">
+            We believe in empowering communities through skill exchange.
+        </p>
+    </div>
+</section>
+
+<!-- 🏆 FEATURES -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Why Choose SkillXchange?</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-3">🌐 Global Network</h3>
+                <p class="text-gray-600">Connect with learners and mentors worldwide.</p>
+            </div>
+            <div class="p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-semibold mb-3">💡 Skill Sharing</h3>
+                <p class="text-gray-600">Teach what you know and learn from others seamlessly.</p>
+            </div>
+            <div class="p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-semibold mb-3">📈 Growth</h3>
+                <p class="text-gray-600">Improve your skills and unlock opportunities.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 🤝 TEAM -->
+<section class="py-20 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Meet Our Team</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition duration-300" data-aos="zoom-in">
+                <img src="/media/{{image}}" alt="Avinash Gupta" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-semibold">Avinash Gupta</h3>
+                <p class="text-gray-500">Backend Developer</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition duration-300" data-aos="zoom-in" data-aos-delay="100">
+                <img src="/media/{{image1}}" alt="Maria Lopez" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-semibold">Vishwajeet Kumar</h3>
+                <p class="text-gray-500">Fronted Developer</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition duration-300" data-aos="zoom-in" data-aos-delay="200">
+                <img src="/media/{{image2}}" alt="Ravi Kumar" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-semibold">Bittu Kumar</h3>
+                <p class="text-gray-500">Documentation</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 🚀 CTA -->
+<section class="bg-indigo-900 text-white py-20 text-center">
+    <div class="max-w-3xl mx-auto px-6" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-6">Join SkillXchange Today</h2>
+        <p class="text-gray-200 mb-8 text-lg">Connect, learn, and grow with our amazing community.</p>
+        <a href="#" class="bg-cyan-400 text-black px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-cyan-300 hover:scale-105 transition duration-300">Get Started</a>
+    </div>
+</section>
+
+<!-- AOS Animation CDN -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
+
+{% endblock %}
