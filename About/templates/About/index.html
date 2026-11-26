@@ -2,97 +2,402 @@
 {% load static %}
 
 {% block content %}
-<!-- 🌟 HERO SECTION -->
-<section class="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-800 text-white py-24 text-center">
-    <div class="max-w-5xl mx-auto px-6" data-aos="fade-up">
-        <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-            About SkillXchange 🚀
-        </h1>
-        <p class="text-lg md:text-xl text-gray-200 mb-8">
-            A global community where learners and mentors exchange skills, grow together, and create opportunities.
-        </p>
-        <div class="space-x-4">
-            <a href="#" class="bg-cyan-400 text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-105 hover:bg-cyan-300 transition duration-300">Get Started</a>
-            <a href="#" class="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition duration-300">Explore Skills</a>
+<!-- ==================== HERO SECTION - 3D ANIMATED ==================== -->
+<section class="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden perspective-2000">
+
+  <!-- Animated Background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="bg-shape w-[800px] h-[800px] bg-cyan-600 -top-60 -left-60" style="animation-delay: 0s;"></div>
+    <div class="bg-shape w-[700px] h-[700px] bg-blue-600 bottom-0 right-0" style="animation-delay: 3s;"></div>
+    <div class="bg-shape w-[500px] h-[500px] bg-purple-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="animation-delay: 6s;"></div>
+    <div class="bg-shape w-[400px] h-[400px] bg-indigo-500 top-20 right-20" style="animation-delay: 9s;"></div>
+    
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 45px 45px;"></div>
+    
+    <!-- Particles -->
+    <div class="particle w-4 h-4 bg-cyan-400 top-1/4 left-1/5 rounded-full shadow-lg shadow-cyan-400/50" style="animation-delay: 0s;"></div>
+    <div class="particle w-3 h-3 bg-blue-400 top-1/3 right-1/4 rounded-full shadow-lg shadow-blue-400/50" style="animation-delay: 1s;"></div>
+    <div class="particle w-5 h-5 bg-purple-400 bottom-1/3 left-1/3 rounded-full shadow-lg shadow-purple-400/50" style="animation-delay: 2s;"></div>
+    <div class="particle w-3 h-3 bg-cyan-300 top-2/3 right-1/3 rounded-full shadow-lg shadow-cyan-300/50" style="animation-delay: 0.5s;"></div>
+    <div class="particle w-4 h-4 bg-indigo-400 bottom-1/4 right-1/5 rounded-full shadow-lg shadow-indigo-400/50" style="animation-delay: 1.5s;"></div>
+    <div class="particle w-3.5 h-3.5 bg-white/30 top-1/2 left-1/2 rounded-full shadow-lg shadow-white/30" style="animation-delay: 2.5s;"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+    
+    <!-- 3D Central Element with Orbiting Icons -->
+    <div class="relative flex justify-center mb-10" data-aos="zoom-in" data-aos-delay="300">
+      <!-- Orbit Rings -->
+      <div class="absolute w-64 h-64 lg:w-80 lg:h-80 rounded-full border border-cyan-400/15 animate-spin-slow" style="animation-duration: 22s;"></div>
+      <div class="absolute w-48 h-48 lg:w-56 lg:h-56 rounded-full border border-blue-400/20 animate-spin-slower" style="animation-duration: 28s; animation-direction: reverse;"></div>
+      <div class="absolute w-36 h-36 lg:w-40 lg:h-40 rounded-full border border-purple-400/25 animate-spin-slow" style="animation-duration: 18s;"></div>
+      
+      <!-- Orbiting Icons -->
+      <div class="absolute w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-cyan-400/25 to-cyan-500/25 border border-cyan-400/35 flex items-center justify-center shadow-lg animate-orbit">
+        <i class="fas fa-brain text-cyan-400 text-sm lg:text-base"></i>
+      </div>
+      <div class="absolute w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-blue-400/25 to-blue-500/25 border border-blue-400/35 flex items-center justify-center shadow-lg animate-orbit-reverse">
+        <i class="fas fa-chart-line text-blue-400 text-sm lg:text-base"></i>
+      </div>
+      <div class="absolute w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-purple-400/25 to-purple-500/25 border border-purple-400/35 flex items-center justify-center shadow-lg animate-orbit-slow">
+        <i class="fas fa-shield-alt text-purple-400 text-sm lg:text-base"></i>
+      </div>
+      <div class="absolute w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-indigo-400/25 to-indigo-500/25 border border-indigo-400/35 flex items-center justify-center shadow-lg" style="animation: orbitRotate 20s linear infinite;">
+        <i class="fas fa-star text-indigo-400 text-sm lg:text-base"></i>
+      </div>
+      
+      <!-- Central 3D Sphere -->
+      <div class="relative z-10 w-32 h-32 lg:w-40 lg:h-40 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-purple-500/50 animate-pulse-glow card-3d">
+        <div class="absolute inset-3 rounded-full bg-slate-950/70 backdrop-blur-sm flex items-center justify-center">
+          <i class="fas fa-bolt text-3xl lg:text-4xl text-white animate-float-updown"></i>
         </div>
+        <div class="absolute -inset-6 rounded-full border-2 border-cyan-400/30 animate-spin-slow" style="animation-duration: 16s;"></div>
+      </div>
     </div>
+
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass-strong border border-white/20 shadow-2xl mb-8 transform-style-3d transition-all duration-500 hover:translate-z-8" data-aos="fade-down" data-aos-delay="400">
+      <span class="relative flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+      </span>
+      <span class="text-white/90 font-semibold text-sm tracking-wide">🚀 Skills Exchange Platform</span>
+    </div>
+
+    <!-- Main Heading -->
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6" data-aos="fade-up" data-aos-delay="500">
+      <span class="text-gradient">Exchange Skills </span><br>
+      <span class="text-gradient-warm">Through Skills</span>
+    </h1>
+
+    <!-- Description -->
+    <p class="text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="600">
+      We bridge the gap between <span class="text-cyan-300 font-semibold">talent</span> and <span class="text-purple-300 font-semibold">opportunity</span> by focusing on what truly matters — 
+      <span class="text-white font-semibold">skills, performance, and potential</span>.
+    </p>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce z-20">
+      <span class="text-white/30 text-xs tracking-[0.3em] uppercase font-medium">Discover Our Story</span>
+      <div class="w-6 h-10 rounded-full border-2 border-white/15 flex justify-center pt-2">
+        <div class="w-1.5 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- 💡 OUR MISSION -->
-<section class="py-20 bg-gray-50 text-center">
-    <div class="max-w-4xl mx-auto px-6" data-aos="fade-up">
-        <h2 class="text-4xl font-bold mb-6">Our Mission</h2>
-        <p class="text-gray-600 text-lg mb-4">
-            SkillXchange aims to make learning accessible for everyone. Connect, teach, and learn.
-        </p>
-        <p class="text-gray-600 text-lg">
-            We believe in empowering communities through skill exchange.
-        </p>
-    </div>
-</section>
+<div class="section-divider"></div>
 
-<!-- 🏆 FEATURES -->
-<section class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Why Choose SkillXchange?</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up">
-                <h3 class="text-xl font-semibold mb-3">🌐 Global Network</h3>
-                <p class="text-gray-600">Connect with learners and mentors worldwide.</p>
-            </div>
-            <div class="p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-xl font-semibold mb-3">💡 Skill Sharing</h3>
-                <p class="text-gray-600">Teach what you know and learn from others seamlessly.</p>
-            </div>
-            <div class="p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-xl font-semibold mb-3">📈 Growth</h3>
-                <p class="text-gray-600">Improve your skills and unlock opportunities.</p>
-            </div>
+<!-- ==================== WHO WE ARE SECTION ==================== -->
+<section class="py-24 bg-white relative overflow-hidden perspective-1500">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="bg-shape w-[600px] h-[600px] bg-cyan-200/25 -top-40 -right-40" style="animation-delay: 0s;"></div>
+    <div class="bg-shape w-[500px] h-[500px] bg-blue-200/25 -bottom-30 -left-30" style="animation-delay: 4s;"></div>
+  </div>
+  
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <div class="glass-card text-center" data-aos="fade-up">
+      <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-cyan-400/40 transform-style-3d transition-all duration-500 hover:rotate-12 hover:scale-110">
+        <i class="fas fa-users text-3xl text-white"></i>
+      </div>
+      <h2 class="text-3xl lg:text-4xl font-extrabold mb-6 text-gradient">Who We Are</h2>
+      <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
+        <strong class="text-slate-900">SkillXwist</strong> is a next-generation selection platform designed to transform how individuals are evaluated and opportunities are distributed. Our system moves beyond traditional course-based learning and enables a skill-first ecosystem <span class="text-cyan-600 font-semibold">where users grow by teaching</span> what they know and learning what they need..
+      </p>
+      
+      <!-- Mini Stats -->
+      <div class="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-gray-100">
+        <div class="count-animate" style="animation-delay: 0.2s;">
+          <div class="text-3xl font-extrabold text-cyan-500">10K+</div>
+          <div class="text-gray-500 text-sm mt-1">Active Users</div>
         </div>
-    </div>
-</section>
-
-<!-- 🤝 TEAM -->
-<section class="py-20 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Meet Our Team</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition duration-300" data-aos="zoom-in">
-                <img src="/media/{{image}}" alt="Avinash Gupta" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
-                <h3 class="text-xl font-semibold">Avinash Gupta</h3>
-                <p class="text-gray-500">Backend Developer</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition duration-300" data-aos="zoom-in" data-aos-delay="100">
-                <img src="/media/{{image1}}" alt="Maria Lopez" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
-                <h3 class="text-xl font-semibold">Vishwajeet Kumar</h3>
-                <p class="text-gray-500">Fronted Developer</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition duration-300" data-aos="zoom-in" data-aos-delay="200">
-                <img src="/media/{{image2}}" alt="Ravi Kumar" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
-                <h3 class="text-xl font-semibold">Bittu Kumar</h3>
-                <p class="text-gray-500">Documentation</p>
-            </div>
+        <div class="count-animate" style="animation-delay: 0.4s;">
+          <div class="text-3xl font-extrabold text-blue-500">5K+</div>
+          <div class="text-gray-500 text-sm mt-1">Skills Exchanged</div>
         </div>
+        <div class="count-animate" style="animation-delay: 0.6s;">
+          <div class="text-3xl font-extrabold text-purple-500">500+</div>
+          <div class="text-gray-500 text-sm mt-1">Active Collaborations</div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- 🚀 CTA -->
-<section class="bg-indigo-900 text-white py-20 text-center">
-    <div class="max-w-3xl mx-auto px-6" data-aos="fade-up">
-        <h2 class="text-4xl font-bold mb-6">Join SkillXchange Today</h2>
-        <p class="text-gray-200 mb-8 text-lg">Connect, learn, and grow with our amazing community.</p>
-        <a href="#" class="bg-cyan-400 text-black px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-cyan-300 hover:scale-105 transition duration-300">Get Started</a>
+<div class="section-divider"></div>
+
+<!-- ==================== PROBLEM + SOLUTION SECTION ==================== -->
+<section class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden perspective-1500">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="bg-shape w-[500px] h-[500px] bg-red-200/20 top-10 -left-20" style="animation-delay: 0s;"></div>
+    <div class="bg-shape w-[450px] h-[450px] bg-cyan-200/20 bottom-10 -right-20" style="animation-delay: 3s;"></div>
+  </div>
+  
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-12">
+      
+      <!-- Problem Card -->
+      <div class="glass-card text-center lg:text-left" data-aos="fade-right">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center mb-5 shadow-xl shadow-red-400/40 transform-style-3d transition-all duration-500 hover:rotate-12 hover:scale-110 mx-auto lg:mx-0">
+          <i class="fas fa-exclamation-triangle text-2xl text-white"></i>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-extrabold mb-4 text-slate-900">The Problem</h2>
+        <p class="text-gray-600 leading-relaxed text-base">
+         Current learning systems rely heavily on paid courses and one-way education, <span class="font-semibold text-red-500">often ignoring practical collaboration and real skill application.</span>,This leads to high costs, low engagement, and limited real-world learning.
+        
+        <!-- Problem Stats -->
+        <div class="mt-6 space-y-2 text-left">
+          <div class="flex items-center gap-2 text-red-500">
+            <i class="fas fa-times-circle"></i>
+            <span class="text-sm text-gray-600">70% of learners never complete paid courses</span>
+          </div>
+          <div class="flex items-center gap-2 text-red-500">
+            <i class="fas fa-times-circle"></i>
+            <span class="text-sm text-gray-600">65% lack practical application after learning</span>
+          </div>
+          <div class="flex items-center gap-2 text-red-500">
+            <i class="fas fa-times-circle"></i>
+            <span class="text-sm text-gray-600">High cost limits access to quality education</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Solution Card -->
+      <div class="highlight-card text-center lg:text-left" data-aos="fade-left">
+        <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mb-5 shadow-xl transform-style-3d transition-all duration-500 hover:rotate-12 hover:scale-110 mx-auto lg:mx-0">
+          <i class="fas fa-lightbulb text-2xl text-white"></i>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-extrabold mb-4">Our Solution</h2>
+        <p class="text-white/90 leading-relaxed text-base">
+          We use a structured <span class="font-semibold text-yellow-300">skill-based selection model</span> where users connect and grow by exchanging real skills, enabling practical learning and faster development.
+        </p>
+        
+        <!-- Solution Stats -->
+        <div class="mt-6 space-y-2 text-left">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-check-circle text-green-300"></i>
+            <span class="text-sm text-white/80">AI-powered skill matching for exchange partners</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-check-circle text-green-300"></i>
+            <span class="text-sm text-white/80">Learn without money through value-based exchange</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-check-circle text-green-300"></i>
+            <span class="text-sm text-white/80">Real-world learning with hands-on collaboration</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- AOS Animation CDN -->
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-    AOS.init({
-        duration: 1000,
-        once: true
-    });
-</script>
+<div class="section-divider"></div>
+
+<!-- ==================== PLATFORM CAPABILITIES SECTION ==================== -->
+<section class="py-24 bg-white relative overflow-hidden perspective-1500">
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #06b6d4 1px, transparent 1px); background-size: 30px 30px;"></div>
+  
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <span class="text-cyan-500 font-bold text-sm uppercase tracking-[0.2em]">What We Offer</span>
+      <h2 class="text-3xl lg:text-5xl font-extrabold mt-3 text-gradient">Platform Capabilities</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <!-- Feature 1 -->
+      <div class="feature-card text-center" data-aos="zoom-in" data-aos-delay="0">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-100 to-cyan-200 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-cyan-200/50">
+          <i class="fas fa-id-card text-2xl text-cyan-600"></i>
+        </div>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2">Skill Profiling</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Users can showcase their real skills and expertise, not just certificates..</p>
+        <div class="mt-4 flex gap-1 justify-center">
+          <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+          <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+          <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card text-center" data-aos="zoom-in" data-aos-delay="150">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-200/50">
+          <i class="fas fa-magic text-2xl text-blue-600"></i>
+        </div>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2">Smart Matching</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Advanced system connects users based on skills they offer and want to learn..</p>
+        <div class="mt-4 flex gap-1 justify-center">
+          <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+          <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+          <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card text-center" data-aos="zoom-in" data-aos-delay="300">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-indigo-200/50">
+          <i class="fas fa-bolt text-2xl text-indigo-600"></i>
+        </div>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2">Live Exchange</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Engage in real-time sessions, collaboration, and knowledge sharing..</p>
+        <div class="mt-4 flex gap-1 justify-center">
+          <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+          <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+          <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card text-center" data-aos="zoom-in" data-aos-delay="450">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-purple-200/50">
+          <i class="fas fa-lock text-2xl text-purple-600"></i>
+        </div>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2">Secure System</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Strong data protection ensures privacy, trust, and safe interactions.</p>
+        <div class="mt-4 flex gap-1 justify-center">
+          <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+          <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+          <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== MISSION & VISION SECTION ==================== -->
+<section class="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden perspective-1500">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="bg-shape w-[500px] h-[500px] bg-cyan-200/25 top-0 right-0" style="animation-delay: 0s;"></div>
+    <div class="bg-shape w-[400px] h-[400px] bg-purple-200/25 bottom-0 left-0" style="animation-delay: 4s;"></div>
+  </div>
+  
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-12">
+      
+      <!-- Mission -->
+      <div class="glass-card text-center" data-aos="fade-right">
+        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-cyan-400/40 animate-pulse-glow">
+          <i class="fas fa-bullseye text-3xl text-white"></i>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-extrabold mb-4 text-slate-900">Our Mission</h2>
+        <p class="text-gray-600 leading-relaxed text-base">
+          To build a <span class="font-semibold text-cyan-600">transparent and efficient exchange system</span> where individuals are recognized for their skills, not just their background.
+        </p>
+        <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 rounded-full">
+          <i class="fas fa-check-circle text-cyan-500"></i>
+          <span class="text-cyan-700 text-sm font-semibold">Fair & Transparent</span>
+        </div>
+      </div>
+      
+      <!-- Vision -->
+      <div class="glass-card text-center" data-aos="fade-left">
+        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-purple-400/40 animate-pulse-glow">
+          <i class="fas fa-eye text-3xl text-white"></i>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-extrabold mb-4 text-slate-900">Our Vision</h2>
+        <p class="text-gray-600 leading-relaxed text-base">
+          To build a collaborative learning ecosystem<span class="font-semibold text-purple-600">where individuals grow by sharing skills and learning from each other,</span> not just consuming content.
+        </p>
+        <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-purple-50 rounded-full">
+          <i class="fas fa-globe text-purple-500"></i>
+          <span class="text-purple-700 text-sm font-semibold">Worldwide Impact</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== WHY CHOOSE US SECTION ==================== -->
+<section class="py-24 bg-white relative overflow-hidden perspective-1500">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40"></div>
+  
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <div class="glass-card" data-aos="fade-up">
+      <div class="text-center mb-10">
+        <span class="text-cyan-500 font-bold text-sm uppercase tracking-[0.2em]">The SkillXwist Advantage</span>
+        <h2 class="text-3xl lg:text-4xl font-extrabold mt-3 text-gradient">Why Choose SkillXwist</h2>
+      </div>
+
+      <ul class="check-list space-y-4 max-w-2xl mx-auto">
+        <li class="flex items-center gap-4 p-4 rounded-xl hover:bg-cyan-50 transition-all duration-300 cursor-pointer">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-cyan-400/30 flex-shrink-0">
+            <i class="fas fa-check text-white"></i>
+          </div>
+          <span class="text-lg font-semibold text-slate-800">Skill-to-skill exchange model (no money required)</span>
+        </li>
+        <li class="flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 transition-all duration-300 cursor-pointer">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-lg shadow-blue-400/30 flex-shrink-0">
+            <i class="fas fa-check text-white"></i>
+          </div>
+          <span class="text-lg font-semibold text-slate-800">Practical and real-world learning experience</span>
+        </li>
+        <li class="flex items-center gap-4 p-4 rounded-xl hover:bg-indigo-50 transition-all duration-300 cursor-pointer">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-400 to-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-400/30 flex-shrink-0">
+            <i class="fas fa-check text-white"></i>
+          </div>
+          <span class="text-lg font-semibold text-slate-800">Peer-to-peer collaboration and networking</span>
+        </li>
+        <li class="flex items-center gap-4 p-4 rounded-xl hover:bg-purple-50 transition-all duration-300 cursor-pointer">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-400 to-purple-500 flex items-center justify-center shadow-lg shadow-purple-400/30 flex-shrink-0">
+            <i class="fas fa-check text-white"></i>
+          </div>
+          <span class="text-lg font-semibold text-slate-800">Flexible and self-paced learning</span>
+        </li>
+        <li class="flex items-center gap-4 p-4 rounded-xl hover:bg-pink-50 transition-all duration-300 cursor-pointer">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-400 to-pink-500 flex items-center justify-center shadow-lg shadow-pink-400/30 flex-shrink-0">
+            <i class="fas fa-check text-white"></i>
+          </div>
+          <span class="text-lg font-semibold text-slate-800">Secure and reliable platform</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== CTA SECTION ==================== -->
+<section class="py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white text-center relative overflow-hidden perspective-1500">
+  
+  <!-- Background Elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute w-[500px] h-[500px] bg-cyan-500/15 blur-3xl animate-pulse top-[-100px] left-[-100px]"></div>
+    <div class="absolute w-[450px] h-[450px] bg-purple-500/15 blur-3xl animate-pulse bottom-[-100px] right-[-100px]" style="animation-delay: 1s;"></div>
+    
+    <!-- Floating Emojis -->
+    <div class="absolute top-16 left-20 text-3xl animate-float-updown opacity-25">💡</div>
+    <div class="absolute bottom-16 right-20 text-3xl animate-float-updown opacity-25" style="animation-delay: 1.5s;">🚀</div>
+    <div class="absolute top-1/3 right-1/4 text-2xl animate-float-updown opacity-20" style="animation-delay: 3s;">✨</div>
+  </div>
+  
+  <div class="relative z-10 max-w-3xl mx-auto px-6" data-aos="zoom-in">
+    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-purple-500/50 animate-pulse-glow">
+      <i class="fas fa-rocket text-3xl text-white"></i>
+    </div>
+    <h2 class="text-3xl lg:text-5xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      Start Your Journey Today
+    </h2>
+    <p class="text-lg text-gray-300 mb-10 max-w-xl mx-auto leading-relaxed">
+      Join a platform where your <span class="text-cyan-300 font-semibold">skills define your future</span>. Be part of the revolution in talent.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#" class="btn-primary">
+        <span class="relative z-10 flex items-center gap-2">
+          <i class="fas fa-rocket"></i> Get Started
+        </span>
+      </a>
+      <a href="#" class="px-8 py-4 rounded-xl border-2 border-white/30 text-white font-bold transition-all duration-300 hover:bg-white/10 hover:border-white/60 hover:translate-z-4">
+        <i class="fas fa-calendar mr-2"></i>Schedule a demo class
+      </a>
+    </div>
+    <p class="text-white/25 text-sm mt-8">No credit card required • Free forever plan available</p>
+  </div>
+</section>
 
 {% endblock %}

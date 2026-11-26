@@ -1,0 +1,826 @@
+{% load static %}
+
+  <!-- Three.js for 3D background -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+      }
+    }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Canvas 3D background */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Animated gradient overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pulseGlow 8s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Floating particles overlay */
+    .particles-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(99, 102, 241, 0.3));
+      border-radius: 50%;
+      animation: floatParticle linear infinite;
+      filter: blur(1px);
+    }
+
+    @keyframes floatParticle {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Main container */
+    .signup-container {
+      width: 100%;
+      max-width: 560px;
+      z-index: 10;
+      position: relative;
+      animation: fadeSlideUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* 3D card effect */
+    .signup-card {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(0px);
+      border-radius: 2rem;
+      box-shadow: 0 30px 55px -20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transform-style: preserve-3d;
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    }
+
+    .signup-card:hover {
+      transform: perspective(1000px) rotateX(2deg) rotateY(2deg) translateY(-8px);
+      box-shadow: 0 40px 65px -25px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Shine effect on card */
+    .signup-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+      pointer-events: none;
+    }
+
+    .signup-card:hover::before {
+      left: 100%;
+    }
+
+    /* Header styles */
+    .signup-header {
+      padding: 2rem 2rem 0.5rem;
+      text-align: center;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #f1f5f9, #eef2ff);
+      padding: 0.5rem 1.3rem;
+      border-radius: 60px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      animation: badgeGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes badgeGlow {
+      0%, 100% { box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+      50% { box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2); }
+    }
+
+    .role-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      animation: iconFloat 2s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .role-name {
+      font-weight: 800;
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #5b21b6, #7c3aed);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .student-badge {
+      background: linear-gradient(135deg, #eef2ff, #ddd6fe);
+      color: #5b21b6;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.9rem;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+      animation: slideInFromBottom 0.6s ease-out 0.2s both;
+    }
+
+    @keyframes slideInFromBottom {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subhead {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 0.6s ease-out 0.3s both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Form styles */
+    .signup-form {
+      padding: 0.2rem 2rem 2rem;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 1.2rem;
+      animation: slideInFromRight 0.5s ease-out both;
+    }
+
+    .input-group:nth-child(1) { animation-delay: 0.1s; }
+    .input-group:nth-child(2) { animation-delay: 0.15s; }
+    .input-group:nth-child(3) { animation-delay: 0.2s; }
+    .input-group:nth-child(4) { animation-delay: 0.25s; }
+    .input-group:nth-child(5) { animation-delay: 0.3s; }
+
+    @keyframes slideInFromRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: 1rem;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.6rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      background: white;
+    }
+
+    .input-group select {
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23475569" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+    }
+
+    .input-group input:hover, .input-group select:hover {
+      border-color: #cbd5e1;
+      transform: translateX(3px);
+    }
+
+    .input-group input:focus, .input-group select:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+      transform: translateX(5px);
+    }
+
+    .input-group input:focus + i, .input-group select:focus + i {
+      color: #8b5cf6;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .name-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0;
+    }
+
+    .two-select-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Password strength */
+    .password-strength {
+      margin-top: 0.4rem;
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .strength-bar {
+      width: 0%;
+      height: 100%;
+      transition: width 0.3s ease, background 0.3s;
+    }
+
+    /* Terms checkbox */
+    .terms-group {
+      display: flex;
+      gap: 0.7rem;
+      margin: 1.5rem 0 1.5rem;
+      font-size: 0.8rem;
+      align-items: center;
+      animation: fadeIn 0.5s ease-out 0.35s both;
+    }
+
+    .terms-group input {
+      width: 1rem;
+      height: 1rem;
+      accent-color: #8b5cf6;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .terms-group input:hover {
+      transform: scale(1.1);
+    }
+
+    .terms-group label a {
+      color: #8b5cf6;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .terms-group label a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #8b5cf6;
+      transition: width 0.3s;
+    }
+
+    .terms-group label a:hover::after {
+      width: 100%;
+    }
+
+    /* Submit button */
+    .signup-btn {
+      background: linear-gradient(105deg, #6d28d9, #8b5cf6);
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 1.5rem;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease-out 0.4s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .signup-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .signup-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 30px -12px #6d28d9;
+    }
+
+    .signup-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .signup-btn i {
+      transition: transform 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .signup-btn:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Message area */
+    .message-area {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      text-align: center;
+      min-height: 40px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .error-msg {
+      color: #dc2626;
+      animation: shake 0.4s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .success-msg {
+      color: #10b981;
+      animation: successPulse 0.5s ease-out;
+    }
+
+    @keyframes successPulse {
+      0% { transform: scale(0.95); opacity: 0; }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Switch prompt */
+    .switch-prompt {
+      text-align: center;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #edf2f7;
+      font-size: 0.85rem;
+      color: #475569;
+      animation: fadeIn 0.5s ease-out 0.45s both;
+    }
+
+    .switch-prompt a {
+      color: #8b5cf6;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .switch-prompt a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #8b5cf6;
+      transition: width 0.3s;
+    }
+
+    .switch-prompt a:hover::after {
+      width: 100%;
+    }
+
+    .switch-prompt a:hover {
+      transform: translateX(3px);
+      display: inline-block;
+    }
+
+    /* Loading spinner */
+    .fa-spinner {
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 550px) {
+      .signup-form { padding: 0.2rem 1.5rem 1.8rem; }
+      .name-row, .two-select-row { flex-direction: column; gap: 0.8rem; }
+      h1 { font-size: 1.6rem; }
+      .signup-header { padding: 1.5rem 1.5rem 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="canvas-container"></div>
+<div class="particles-overlay" id="particles"></div>
+
+<div class="signup-container">
+  <div class="signup-card" id="card3d">
+    <div class="signup-header">
+      <div class="role-badge">
+        <div class="role-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span class="role-name">Student Portal</span>
+        <span class="student-badge"><i class="fas fa-star"></i> Learner Access</span>
+      </div>
+      <h1>Start learning today</h1>
+      <div class="subhead">Join thousands of students — free access to courses & tools</div>
+    </div>
+
+    <div class="signup-form">
+      <form id="studentForm" method="post">
+        {% csrf_token %}
+        <div class="name-row">
+          <div class="input-group"><i class="fas fa-user"></i><input type="text" name="fname" id="studentFirstName" placeholder="First name" required autocomplete="given-name"></div>
+          <div class="input-group"><i class="fas fa-user-friends"></i><input type="text" name="lname" id="studentLastName" placeholder="Last name" required autocomplete="family-name"></div>
+        </div>
+        <div class="input-group"><i class="fas fa-envelope"></i><input type="email" name="email" id="studentEmail" placeholder="Email address" required autocomplete="email"></div>
+        
+        <!-- TWO SELECTS for STUDENT page -->
+        <div class="two-select-row">
+          <div class="input-group"><i class="fas fa-graduation-cap"></i>
+            <select id="studentGrade" name="education" required>
+              <option value="" disabled selected>Education level</option>
+              <option value="highschool">🏫 High School</option>
+              <option value="undergrad">📚 Undergraduate</option>
+              <option value="postgrad">🎓 Postgraduate</option>
+              <option value="self">✨ Self-taught</option>
+            </select>
+          </div>
+          <div class="input-group"><i class="fas fa-graduation-cap"></i> 
+            <select id="studentInterest" name="interest" required>
+              <option value="" disabled selected>Primary interest</option>
+              <option value="coding">💻 Coding & AI</option>
+              <option value="science">🔬 Science</option>
+              <option value="math">📐 Mathematics</option>
+              <option value="design">🎨 Design</option>
+              <option value="business">💼 Business</option>
+            </select>
+          </div>
+        </div>
+
+         <div class="input-group"><i class="fas fa-check-circle"></i><input type="text" name="phone"  placeholder="Phone number" required autocomplete="new-password"></div>
+
+        <div class="input-group"><i class="fas fa-lock"></i><input type="password" name="pwd" id="studentPassword" placeholder="Create password" required autocomplete="new-password"></div>
+        <div class="input-group"><i class="fas fa-check-circle"></i><input type="password" id="studentConfirmPassword" placeholder="Confirm password" required autocomplete="new-password"></div>
+        <div class="password-strength"><div class="strength-bar" id="studentStrengthBar"></div></div>
+        <div class="terms-group"><input type="checkbox" id="studentTerms" required><label>I agree to the <a href="#" id="termsLink">Terms of Service</a> & <a href="#" id="privacyLink">Privacy Policy</a></label></div>
+        <button type="submit" class="signup-btn" id="signupButton"><i class="fas fa-user-graduate"></i> Create Student Account <i class="fas fa-arrow-right"></i></button>
+        <div class="message-area" id="studentMessage"></div>
+        <div class="switch-prompt">Are you an educator? <a href="{% url 'signup_teacher' %}" id="switchToTeacherBtn">Sign up as Teacher →</a></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import * as THREE from 'three';
+
+  // Setup 3D scene
+  const container = document.getElementById('canvas-container');
+  const scene = new THREE.Scene();
+  scene.background = null;
+  
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 30;
+  
+  const renderer = new THREE.WebGLRenderer({ alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
+  container.appendChild(renderer.domElement);
+  
+  // Create floating orbs / particles
+  const geometry = new THREE.SphereGeometry(0.2, 16, 16);
+  const material = new THREE.MeshStandardMaterial({
+    color: 0x8b5cf6,
+    emissive: 0x4c1d95,
+    emissiveIntensity: 0.3,
+    metalness: 0.6,
+    roughness: 0.3
+  });
+  
+  const particlesCount = 200;
+  const particlesGroup = [];
+  
+  for (let i = 0; i < particlesCount; i++) {
+    const particle = new THREE.Mesh(geometry, material.clone());
+    particle.position.x = (Math.random() - 0.5) * 80;
+    particle.position.y = (Math.random() - 0.5) * 50;
+    particle.position.z = (Math.random() - 0.5) * 40 - 20;
+    particle.scale.setScalar(Math.random() * 1.5 + 0.5);
+    particle.userData = {
+      speedX: (Math.random() - 0.5) * 0.02,
+      speedY: (Math.random() - 0.5) * 0.02,
+      speedZ: (Math.random() - 0.5) * 0.01,
+      rotationSpeed: (Math.random() - 0.5) * 0.02
+    };
+    scene.add(particle);
+    particlesGroup.push(particle);
+  }
+  
+  // Add a central torus knot for visual interest
+  const knotGeometry = new THREE.TorusKnotGeometry(3, 0.8, 128, 16, 3, 4);
+  const knotMaterial = new THREE.MeshStandardMaterial({
+    color: 0x8b5cf6,
+    emissive: 0x4c1d95,
+    emissiveIntensity: 0.2,
+    metalness: 0.7,
+    roughness: 0.2,
+    transparent: true,
+    opacity: 0.6
+  });
+  const torusKnot = new THREE.Mesh(knotGeometry, knotMaterial);
+  torusKnot.position.z = -10;
+  scene.add(torusKnot);
+  
+  // Add ambient and point lights
+  const ambientLight = new THREE.AmbientLight(0x404060);
+  scene.add(ambientLight);
+  
+  const pointLight1 = new THREE.PointLight(0x8b5cf6, 1);
+  pointLight1.position.set(10, 10, 10);
+  scene.add(pointLight1);
+  
+  const pointLight2 = new THREE.PointLight(0x3b82f6, 0.8);
+  pointLight2.position.set(-10, 5, 15);
+  scene.add(pointLight2);
+  
+  const pointLight3 = new THREE.PointLight(0xec4899, 0.5);
+  pointLight3.position.set(5, -8, 10);
+  scene.add(pointLight3);
+  
+  // Animation loop
+  let time = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    time += 0.008;
+    
+    // Animate particles
+    particlesGroup.forEach(particle => {
+      particle.position.x += particle.userData.speedX;
+      particle.position.y += particle.userData.speedY;
+      particle.position.z += particle.userData.speedZ;
+      particle.rotation.x += particle.userData.rotationSpeed;
+      particle.rotation.y += particle.userData.rotationSpeed;
+      
+      // Wrap around
+      if (particle.position.x > 45) particle.position.x = -45;
+      if (particle.position.x < -45) particle.position.x = 45;
+      if (particle.position.y > 30) particle.position.y = -30;
+      if (particle.position.y < -30) particle.position.y = 30;
+      if (particle.position.z > 25) particle.position.z = -35;
+      if (particle.position.z < -35) particle.position.z = 25;
+    });
+    
+    // Animate torus knot
+    torusKnot.rotation.x = time * 0.5;
+    torusKnot.rotation.y = time * 0.3;
+    torusKnot.rotation.z = time * 0.2;
+    
+    // Rotate lights
+    pointLight1.position.x = 10 + Math.sin(time) * 3;
+    pointLight1.position.z = 10 + Math.cos(time * 0.7) * 3;
+    pointLight2.position.x = -10 + Math.sin(time * 0.5) * 4;
+    pointLight2.position.z = 15 + Math.cos(time * 0.6) * 3;
+    
+    renderer.render(scene, camera);
+  }
+  
+  animate();
+  
+  // Handle window resize
+  window.addEventListener('resize', onWindowResize, false);
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+  
+  // Mouse move effect for 3D card rotation
+  const card = document.getElementById('card3d');
+  document.addEventListener('mousemove', (e) => {
+    const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+    const rotateX = mouseY * 5;
+    const rotateY = mouseX * 5;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+  });
+  
+  document.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+  });
+</script>
+
+<script>
+  (function() {
+    const form = document.getElementById('studentForm');
+    const pwd = document.getElementById('studentPassword');
+    const confirmPwdField = document.getElementById('studentConfirmPassword');
+    const msgDiv = document.getElementById('studentMessage');
+    const strengthBar = document.getElementById('studentStrengthBar');
+    const signupBtn = document.getElementById('signupButton');
+    
+    function showMsg(t, isErr=true) { 
+      msgDiv.innerHTML = t; 
+      msgDiv.style.color = isErr ? '#dc2626' : '#10b981';
+      msgDiv.className = 'message-area ' + (isErr ? 'error-msg' : 'success-msg');
+      if(!isErr) setTimeout(()=>{ msgDiv.innerHTML = ''; msgDiv.className = 'message-area'; }, 4000);
+    }
+    
+    function checkStrength(pw) {
+      let score=0; 
+      if(pw.length>=8) score++; 
+      if(pw.length>=12) score++; 
+      if(/[A-Z]/.test(pw)) score++; 
+      if(/[0-9]/.test(pw)) score++; 
+      if(/[^A-Za-z0-9]/.test(pw)) score++;
+      let w=0, col='#ef4444'; 
+      if(pw.length===0) w=0; 
+      else if(score<=2) w=25; 
+      else if(score===3) w=50; 
+      else if(score===4) w=75; 
+      else w=100;
+      if(w>=75) col='#10b981'; 
+      else if(w>=50) col='#f59e0b'; 
+      else col='#ef4444';
+      strengthBar.style.width=w+'%'; 
+      strengthBar.style.backgroundColor=col;
+      return score>=3;
+    }
+    
+    pwd.addEventListener('input',()=>checkStrength(pwd.value));
+    
+    form.addEventListener('submit',(e)=>{
+      // e.preventDefault();
+      const fname = document.getElementById('studentFirstName').value.trim();
+      const lname = document.getElementById('studentLastName').value.trim();
+      const email = document.getElementById('studentEmail').value.trim();
+      const grade = document.getElementById('studentGrade').value;
+      const interest = document.getElementById('studentInterest').value;
+      const password = pwd.value;
+      const confirmPwd = confirmPwdField.value;
+      const terms = document.getElementById('studentTerms').checked;
+      
+      if(!fname || !lname) return showMsg('✘ Please enter full name.');
+      if(!email || !/^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email)) return showMsg('✘ Valid email required.');
+      if(!grade) return showMsg('✘ Please select education level.');
+      if(!interest) return showMsg('✘ Please select your primary interest.');
+      if(password.length<8) return showMsg('✘ Password must be 8+ characters.');
+      if(password !== confirmPwd) return showMsg('✘ Passwords do not match.');
+      if(!terms) return showMsg('✘ Accept terms to continue.');
+      
+      signupBtn.disabled = true;
+      signupBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Creating account...';
+      
+      setTimeout(() => {
+        showMsg('✓ Student account created! Redirecting to dashboard...', false);
+        setTimeout(() => {
+          alert(`🎓 STUDENT SIGNUP SUCCESS!\n\nName: ${fname} ${lname}\nEmail: ${email}\nLevel: ${grade}\nInterest: ${interest}\n\n🚀 Welcome to SkillsX Learning Platform!`);
+          signupBtn.disabled = false;
+          signupBtn.innerHTML = '<i class="fas fa-user-graduate"></i> Create Student Account <i class="fas fa-arrow-right"></i>';
+        }, 1000);
+      }, 1500);
+    });
+    
+    document.getElementById('switchToTeacherBtn').addEventListener('click',(e)=>{
+      // e.preventDefault();
+      window.location.href = 'teacher-signup.html';
+    });
+    
+    document.getElementById('termsLink').addEventListener('click', (e) => {
+      // e.preventDefault();
+      showMsg('📄 View Terms of Service (demo) — Full terms available in production.', false);
+    });
+    
+    document.getElementById('privacyLink').addEventListener('click', (e) => {
+      // e.preventDefault();
+      showMsg('🔒 Privacy Policy: Your data is encrypted and never shared.', false);
+    });
+    
+    // Create floating CSS particles
+    function createCSSParticles() {
+      const particlesContainer = document.getElementById('particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        const size = Math.random() * 6 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = Math.random() * 10 + 6 + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.opacity = Math.random() * 0.4 + 0.1;
+        particlesContainer.appendChild(particle);
+      }
+    }
+    createCSSParticles();
+  })();
+</script>

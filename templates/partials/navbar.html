@@ -1,62 +1,116 @@
-<!-- NAVBAR -->
-<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+<style>
+  .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+  .logo-icon {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      animation: rotateLogo 8s linear infinite;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
 
-        <!-- LOGO -->
-        <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-            SkillX
-        </h1>
+    @keyframes rotateLogo {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-        <!-- DESKTOP MENU -->
-        <div class="hidden md:flex space-x-8 items-center">
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, #93c5fd, #c4b5fd);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-family: 'Space Grotesk', monospace;
+    } 
+</style>
+<body class="bg-gradient-to-br from-secondary-50 via-white to-blue-50 min-h-screen font-inter antialiased overflow-x-hidden">
 
-            <a href="{% url 'home' %}" class="nav-link">Home</a>
-            <a href="{% url 'about' %}" class="nav-link">About</a>
-            <a href="{% url 'services' %}" class="nav-link">Services</a>
-            <a href="#" class="nav-link">Explore</a>
+  <!-- ==================== NAVBAR - 3D ANIMATED ==================== -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 perspective-1500">
+    <div id="nav-inner" class="bg-primary-900/90 backdrop-blur-xl border-b border-white/10 transition-all duration-500">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-5 lg:px-8 py-3.5">
+        
+        <!-- Logo -->
+        <div class="logo">
+      <div class="logo-icon"><i class="fas fa-brain"></i></div>
+      <span class="logo-text">SkillX</span>
+    </div>
 
-            <!-- Buttons -->
-            <a href="{% url 'login' %}" class="btn-outline">Login</a>
-            <a href="#" class="btn-primary">Join Now</a>
-
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center space-x-1">
+          <a href="{% url 'home' %}" class="nav-link text-white/85 hover:text-white font-medium px-4 py-2 rounded-xl transition-all duration-300 hover:bg-white/8 hover:translate-z-4 relative group text-sm">
+            <i class="fas fa-home mr-1.5 text-accent-400 text-xs"></i>Home
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent-400 group-hover:w-3/4 transition-all duration-300 rounded-full shadow-lg shadow-accent-500/50"></span>
+          </a>
+          <a href="{% url 'about' %}" class="nav-link text-white/85 hover:text-white font-medium px-4 py-2 rounded-xl transition-all duration-300 hover:bg-white/8 hover:translate-z-4 relative group text-sm">
+            <i class="fas fa-info-circle mr-1.5 text-accent-400 text-xs"></i>About
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent-400 group-hover:w-3/4 transition-all duration-300 rounded-full shadow-lg shadow-accent-500/50"></span>
+          </a>
+          <a href="{% url 'services' %}" class="nav-link text-white/85 hover:text-white font-medium px-4 py-2 rounded-xl transition-all duration-300 hover:bg-white/8 hover:translate-z-4 relative group text-sm">
+            <i class="fas fa-cubes mr-1.5 text-accent-400 text-xs"></i>Services
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent-400 group-hover:w-3/4 transition-all duration-300 rounded-full shadow-lg shadow-accent-500/50"></span>
+          </a>
+          <a href="{% url 'course' %}" class="nav-link text-white/85 hover:text-white font-medium px-4 py-2 rounded-xl transition-all duration-300 hover:bg-white/8 hover:translate-z-4 relative group text-sm">
+            <i class="fas fa-users mr-3 text-cyan-400"></i>Course
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent-400 group-hover:w-3/4 transition-all duration-300 rounded-full shadow-lg shadow-accent-500/50"></span>
+          </a>
+          <a href="{% url 'explore' %}" class="nav-link text-white/85 hover:text-white font-medium px-4 py-2 rounded-xl transition-all duration-300 hover:bg-white/8 hover:translate-z-4 relative group text-sm">
+            <i class="fas fa-compass mr-1.5 text-accent-400 text-xs"></i>Explore
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent-400 group-hover:w-3/4 transition-all duration-300 rounded-full shadow-lg shadow-accent-500/50"></span>
+          </a>
+        </div>
+        
+        <!-- Desktop Buttons -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="{% url 'login' %}" class="px-5 py-2.5 rounded-full border-2 border-white/60 text-white font-semibold text-sm transition-all duration-300 hover:bg-white/10 hover:border-accent-400 hover:translate-z-6 hover:scale-105 hover:shadow-lg hover:shadow-accent-500/25">
+            <i class="far fa-user mr-1.5 text-xs"></i>Login
+          </a>
+          <a href="{% url 'signup_student' %}" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-accent-500 to-accent-600 text-white font-semibold text-sm shadow-lg shadow-accent-500/40 transition-all duration-300 hover:translate-z-8 hover:scale-110 hover:shadow-xl hover:shadow-accent-500/60 relative overflow-hidden group">
+            <span class="relative z-10"><i class="fas fa-rocket mr-1.5 text-xs"></i>Sign up</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-accent-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
         </div>
 
-        <!-- MOBILE MENU BUTTON -->
-        <button id="menu-btn" class="md:hidden text-white text-2xl">
-            ☰
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="lg:hidden text-white w-11 h-11 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center transition-all duration-300 hover:bg-accent-500/30 hover:border-accent-400 hover:scale-110 hover:rotate-180 text-xl">
+          <i class="fas fa-bars"></i>
         </button>
+      </div>
 
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-primary-950/98 backdrop-blur-3xl border-b border-accent-500/40 shadow-2xl transition-all duration-500 transform -translate-y-6 opacity-0 pointer-events-none">
+        <div class="px-5 py-5 space-y-2">
+          <a href="{% url 'home' %}" class="block text-white/90 hover:text-white font-medium py-3 px-4 rounded-xl hover:bg-accent-500/20 transition-all duration-300 hover:translate-x-3">
+            <i class="fas fa-home mr-3 text-accent-400 w-5 text-center"></i>Home
+          </a>
+          <a href="{% url 'about' %}" class="block text-white/90 hover:text-white font-medium py-3 px-4 rounded-xl hover:bg-accent-500/20 transition-all duration-300 hover:translate-x-3">
+            <i class="fas fa-info-circle mr-3 text-accent-400 w-5 text-center"></i>About
+          </a>
+          <a href="#services" class="block text-white/90 hover:text-white font-medium py-3 px-4 rounded-xl hover:bg-accent-500/20 transition-all duration-300 hover:translate-x-3">
+            <i class="fas fa-cubes mr-3 text-accent-400 w-5 text-center"></i>Services
+          </a>
+          <a href="#explore" class="block text-white/90 hover:text-white font-medium py-3 px-4 rounded-xl hover:bg-accent-500/20 transition-all duration-300 hover:translate-x-3">
+            <i class="fas fa-compass mr-3 text-accent-400 w-5 text-center"></i>Explore
+          </a>
+          <div class="pt-3 space-y-3 border-t border-white/10">
+            <a href="#" class="block text-center py-3 rounded-full border-2 border-white/50 text-white font-semibold hover:bg-white/10 transition-all duration-300 text-sm">
+              <i class="far fa-user mr-1.5"></i>Login
+            </a>
+            <a href="#" class="block text-center py-3 rounded-full bg-gradient-to-r from-accent-500 to-accent-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+              <i class="fas fa-rocket mr-1.5"></i>Register
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="hidden md:hidden flex-col bg-black text-white px-6 pb-4 space-y-3">
-
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'about' %}">About</a>
-        <a href="{% url 'services' %}">Services</a>
-        <a href="#">Explore</a>
-
-        <a href="#" class="btn-outline text-center">Login</a>
-        <a href="#" class="btn-primary text-center">Join Now</a>
-
-    </div>
-
-</nav>
-
-<script>
-/* Scroll effect */
-window.addEventListener("scroll", function() {
-    let nav = document.getElementById("navbar");
-    if (window.scrollY > 50) {
-        nav.classList.add("bg-black", "shadow-lg");
-    } else {
-        nav.classList.remove("bg-black", "shadow-lg");
-    }
-});
-
-/* Mobile toggle */
-document.getElementById("menu-btn").addEventListener("click", function() {
-    document.getElementById("mobile-menu").classList.toggle("hidden");
-});
-</script>
+  </nav>

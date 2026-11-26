@@ -9,3 +9,6 @@ def about(Req):
         'image1':"image/vishwajeet.jpg",
         }
         return render(Req , 'About/index.html',data)
+
+def explore(Req):
+        return render(Req , 'explore/explore.html')

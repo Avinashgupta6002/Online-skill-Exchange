@@ -26,6 +26,7 @@ urlpatterns = [
     path("",include('login.urls')),
     path("",include('Services.urls')),
     path("" , include('signup.urls')),
+    path("",include('Courses.urls')),
 ]
 
 if settings.DEBUG:

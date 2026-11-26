@@ -6,8 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
       
-    <!-- Project base css connectivity -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+     <!-- Inter font – clean and modern -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
 <!-- Tailwind -->
@@ -17,15 +24,145 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
-</script>
 
+
+    <!-- Project base css connectivity -->
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
+
+{% block extra_css %}
+<!-- <link rel="stylesheet" href="{% static 'services/css/service.css' %}"> -->
+<link rel="stylesheet" href="{% static 'css/course.css' %}">
+{% endblock %}
+<!--
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}"> -->
+
+
+  <!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'outfit': ['Outfit', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+              200: '#BFDBFE',
+              300: '#93C5FD',
+              400: '#60A5FA',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+              800: '#1E3A8A',
+              900: '#1A2E6B',
+              950: '#0F1D4A',
+            },
+            secondary: {
+              50: '#F8FAFC',
+              100: '#F1F5F9',
+              200: '#E2E8F0',
+              300: '#CBD5E1',
+              400: '#94A3B8',
+              500: '#64748B',
+              600: '#475569',
+              700: '#334155',
+              800: '#1E293B',
+              900: '#0F172A',
+            },
+            accent: {
+              400: '#60A5FA',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'float-slow': 'float 8s ease-in-out infinite',
+            'float-delayed': 'float 7s ease-in-out 1s infinite',
+            'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+            'pulse-glow-delayed': 'pulseGlow 2.5s ease-in-out 0.5s infinite',
+            'spin-slow': 'spin 25s linear infinite',
+            'spin-slower': 'spin 35s linear infinite reverse',
+            'bounce-slow': 'bounce 3s ease-in-out infinite',
+            'slide-up': 'slideUp 0.8s ease-out forwards',
+            'slide-down': 'slideDown 0.5s ease-out forwards',
+            'fade-in': 'fadeIn 1s ease-out forwards',
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'rotate-3d': 'rotate3D 10s ease-in-out infinite',
+            'wave': 'wave 8s ease-in-out infinite',
+            'glow-line': 'glowLine 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotateX(0deg) rotateY(0deg)' },
+              '25%': { transform: 'translateY(-20px) rotateX(2deg) rotateY(-3deg)' },
+              '50%': { transform: 'translateY(-10px) rotateX(0deg) rotateY(0deg)' },
+              '75%': { transform: 'translateY(-25px) rotateX(-1.5deg) rotateY(3deg)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2)' },
+              '50%': { boxShadow: '0 0 35px rgba(59, 130, 246, 0.8), 0 0 70px rgba(59, 130, 246, 0.4)' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(50px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideDown: {
+              '0%': { opacity: '0', transform: 'translateY(-30px) rotateX(-15deg)' },
+              '100%': { opacity: '1', transform: 'translateY(0) rotateX(0deg)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            rotate3D: {
+              '0%, 100%': { transform: 'rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
+              '33%': { transform: 'rotateX(5deg) rotateY(10deg) rotateZ(2deg)' },
+              '66%': { transform: 'rotateX(-3deg) rotateY(-8deg) rotateZ(-1deg)' },
+            },
+            wave: {
+              '0%, 100%': { transform: 'translateX(0) translateZ(0)' },
+              '50%': { transform: 'translateX(10px) translateZ(20px)' },
+            },
+            glowLine: {
+              '0%, 100%': { width: '0%', left: '0%' },
+              '50%': { width: '100%', left: '0%' },
+            },
+          },
+          transformStyle: {
+            'preserve-3d': 'preserve-3d',
+          },
+          perspective: {
+            '1000': '1000px',
+            '1500': '1500px',
+            '2000': '2000px',
+          },
+          backfaceVisibility: {
+            'hidden': 'hidden',
+          },
+          translate: {
+            'z-4': '4px',
+            'z-8': '8px',
+            'z-12': '12px',
+            'z-16': '16px',
+            'z-20': '20px',
+            'z-24': '24px',
+          },
+        }
+      }
+    }
+  </script>
 
 </head>
 <body>
@@ -45,7 +182,10 @@
 
 
     {% include 'partials/footer.html' %}
-
+<script src="{% static 'js/about.js' %}"></script>
+<script src="{% static 'js/footer.js' %}"></script>
+<script src="{% static 'js/navbar.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
     
 </body>
 </html>
